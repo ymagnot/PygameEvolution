@@ -157,4 +157,6 @@ while True:
           tela.blit(gemidao2,(altura/2,740))
                        
                 
+
     pygame.display.update()
+
