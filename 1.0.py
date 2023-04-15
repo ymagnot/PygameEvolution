@@ -141,6 +141,8 @@ while True:
           wvelocidade = wvelocidade - 0.1
           prenivel = prenivel + 1          
           comprimentocobra = comprimentocobra + 1          
-          tela.blit(gemidao2,(altura/2,740))               
-
+          tela.blit(gemidao2,(altura/2,740))
+                       
+                
     pygame.display.update()
+
