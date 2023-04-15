@@ -158,5 +158,3 @@ while True:
                        
                 
     pygame.display.update()
-
-SSWWWWWWWWW
