@@ -113,6 +113,7 @@ while True:
     else:
         pass
     
+    teste
             
     
     lcabeca = []    
