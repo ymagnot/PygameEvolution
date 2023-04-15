@@ -111,7 +111,6 @@ while True:
     else:
         pass
     
-
             
     
     lcabeca = []    
