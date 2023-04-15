@@ -22,7 +22,6 @@ prenivel= 0
 nivel = 1
 morreu = False
 
-
 pygame.display.set_caption('Gemidomentro')
 pygame.mixer.music.set_volume (volumetema)
 tela = pygame.display.set_mode((largura,altura))
@@ -47,9 +46,7 @@ def morte ():
     velocidadecobra= 0
     comprimentocobra = 3
     morreu = False
-    
 
-    
 def crescimento(lcobra):
       for XeY in lcobra:
             pygame.draw.rect(tela, (40,144,255),(XeY[0], XeY[1], tamanhocorpocobra, tamanhocorpocobra2))
@@ -90,7 +87,6 @@ while True:
                 else:
                  controlex = 0
                  controley = svelocidade
-
         
     x = x + controlex
     y = y + controley
@@ -109,9 +105,7 @@ while True:
         nivel = nivel + 1
         prenivel = 0
     else:
-        pass
-    
-            
+        pass           
     
     lcabeca = []    
     lcabeca.append(x)
@@ -132,12 +126,7 @@ while True:
                     exit
                 if event.type == KEYDOWN:
                     if event.key == K_r:
-                        morte()    
-                
-        
-
-    
-    
+                        morte()   
     
     if ponto1.colliderect(ponto2):
           tela.blit(gemidao2,(altura/2,740))
@@ -150,11 +139,8 @@ while True:
           dvelocidade = dvelocidade + 0.1
           svelocidade = svelocidade + 0.1
           wvelocidade = wvelocidade - 0.1
-          prenivel = prenivel + 1
-
-          print (prenivel)
+          prenivel = prenivel + 1          
           comprimentocobra = comprimentocobra + 1          
-          tela.blit(gemidao2,(altura/2,740))
-                       
-                
+          tela.blit(gemidao2,(altura/2,740))               
+
     pygame.display.update()
