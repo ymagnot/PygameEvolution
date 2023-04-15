@@ -23,8 +23,6 @@ nivel = 1
 morreu = False
 
 
-
-
 pygame.display.set_caption('Gemidomentro')
 pygame.mixer.music.set_volume (volumetema)
 tela = pygame.display.set_mode((largura,altura))
