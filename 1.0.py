@@ -101,6 +101,15 @@ while True:
     tela.blit(mensagem2,(1,1))    
     tela.blit(mensagemnivel2,(888,1)) 
 
+    if x > largura:
+        x = 0
+    if x < 0:
+        x = largura
+    if y > altura:
+        y = 0
+    if y < 0:
+        y = altura            
+
     if prenivel == 10:
         nivel = nivel + 1
         prenivel = 0
@@ -140,7 +149,8 @@ while True:
           svelocidade = svelocidade + 0.1
           wvelocidade = wvelocidade - 0.1
           prenivel = prenivel + 1          
-          comprimentocobra = comprimentocobra + 1          
+          comprimentocobra = comprimentocobra + 1
+          print (avelocidade, ganhos, comprimentocobra, prenivel)          
           tela.blit(gemidao2,(altura/2,740))
                        
                 
