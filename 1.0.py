@@ -33,7 +33,7 @@ fps = pygame.time.Clock()
 fonte = pygame.font.SysFont('courier_new', 25, True,)
 tema = pygame.mixer.music.load('tema.mp3')
 gemido = pygame.mixer.Sound('geme.wav')
-gemido.set_volume (0.0)
+gemido.set_volume (0.3)
 pygame.mixer.music.play(-1)
 
 def morte ():
