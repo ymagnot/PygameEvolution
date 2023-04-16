@@ -15,12 +15,16 @@ tamanho, tamanho2 = 20, 20
 tamanhocorpocobra, tamanhocorpocobra2 = 20, 20
 tamanhocomida, tamanhocomida2 = 20, 20
 avelocidade, dvelocidade, wvelocidade, svelocidade = -5, 5, -5, 5
-comprimentocobra = 3
+comprimentocobra = 5
 volumetema = 0.1
 ganhos = 0
 prenivel= 0
 nivel = 1
+nivelmaximo = 0
+nivelmaximo2 = 0
 morreu = False
+fontegameover = pygame.font.SysFont('courier_new', 75, True)
+fonterecord = pygame.font.SysFont('courier_new', 20, True)
 
 pygame.display.set_caption('Gemidomentro')
 pygame.mixer.music.set_volume (volumetema)
@@ -33,7 +37,7 @@ gemido.set_volume (0.0)
 pygame.mixer.music.play(-1)
 
 def morte ():
-    global y, x, y1, x1, ganhos, lcobra, lcabeca, comprimentocobra, morreu, velocidadecobra, avelocidade, dvelocidade, wvelocidade, svelocidade, nivel
+    global y, x, y1, x1, ganhos, lcobra, lcabeca, comprimentocobra, morreu, velocidadecobra, avelocidade, dvelocidade, wvelocidade, svelocidade, nivel, nivelmaximo, nivelmaximo2
     avelocidade, dvelocidade, wvelocidade, svelocidade = -5, 5, -5, 5
     nivel = 1
     y = altura/2-19
@@ -44,12 +48,13 @@ def morte ():
     lcobra = []
     lcabeca = []
     velocidadecobra= 0
-    comprimentocobra = 3
+    nivelmaximo = 0
+    comprimentocobra = 5    
     morreu = False
 
 def crescimento(lcobra):
       for XeY in lcobra:
-            pygame.draw.rect(tela, (40,144,255),(XeY[0], XeY[1], tamanhocorpocobra, tamanhocorpocobra2))
+            pygame.draw.rect(tela, (50,205,50),(XeY[0], XeY[1], tamanhocorpocobra, tamanhocorpocobra2))
 lcobra = []     
 
 while True:    
@@ -89,15 +94,21 @@ while True:
                  controley = svelocidade
         
     x = x + controlex
-    y = y + controley
+    y = y + controley    
+    gameover = f'MORREU'    
+    gameover2 = fontegameover.render(gameover, True, (255,0,0))
+    gm = f'Pressione R para Reiniciar'
+    gm2 = fonte.render(gm, True, (255,255,255))
+    gm3 = f'Maior Pontuação: {nivelmaximo2}'
+    gm4 = fonterecord.render(gm3, True, (255,0,0))
     mensagem = f'Gemidos : {ganhos}'
     mensagem2 = fonte.render(mensagem, False, (255,255,255))
     mensagemnivel= f'Nivel :{nivel}'
     mensagemnivel2 = fonte.render(mensagemnivel, False, (255,255,255))
     gemidao = f'AAAnnnnnnnnnn'
     gemidao2 = fonte.render(gemidao, False, (255,255,255))    
-    ponto1 = pygame.draw.rect(tela, (30,144,255), (x,y,tamanho, tamanho2))
-    ponto2 = pygame.draw.rect(tela, (255,255,255), (x1,y1,tamanhocomida,tamanhocomida2))
+    ponto1 = pygame.draw.rect(tela, (0,100,0), (x,y,tamanho, tamanho2))
+    ponto2 = pygame.draw.rect(tela, (178,34,34), (x1,y1,tamanhocomida,tamanhocomida2))
     tela.blit(mensagem2,(1,1))    
     tela.blit(mensagemnivel2,(888,1)) 
 
@@ -114,8 +125,8 @@ while True:
         nivel = nivel + 1
         prenivel = 0
     else:
-        pass           
-    
+        pass        
+
     lcabeca = []    
     lcabeca.append(x)
     lcabeca.append(y)    
@@ -124,10 +135,14 @@ while True:
           del lcobra[0]
 
     crescimento(lcobra)
+
     if lcobra.count(lcabeca) > 1:
         morreu = True
         while morreu:
             tela.fill((0,0,0))
+            tela.blit(gameover2,(altura/2-20,275))
+            tela.blit(gm2,(305,650))
+            tela.blit(gm4, (389, 390))          
             pygame.display.update()
             for event in pygame.event.get():
                 if event.type == QUIT:
@@ -149,8 +164,12 @@ while True:
           svelocidade = svelocidade + 0.1
           wvelocidade = wvelocidade - 0.1
           prenivel = prenivel + 1          
+          nivelmaximo = nivelmaximo + 1         
           comprimentocobra = comprimentocobra + 1
-          print (avelocidade, ganhos, comprimentocobra, prenivel)          
+          if nivelmaximo >= nivelmaximo2:
+              nivelmaximo2 = nivelmaximo
+          else:
+              pass               
           tela.blit(gemidao2,(altura/2,740))
                        
                 
