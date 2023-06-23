@@ -3,4 +3,4 @@ Trying to create games in pygame
 
 To test, just download the 1.0 Version and 2 sounds for the better experience
 
-Discord Magno#4977
+Discord yMagnot
